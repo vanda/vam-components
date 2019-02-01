@@ -12,8 +12,20 @@ import '@stencil/core';
 
 export namespace Components {
 
-  interface VamModal {}
-  interface VamModalAttributes extends StencilHTMLAttributes {}
+  interface VamModal {
+    'cta': string;
+    'description': string;
+    'dismiss': string;
+    'heading': string;
+    'href': string;
+  }
+  interface VamModalAttributes extends StencilHTMLAttributes {
+    'cta'?: string;
+    'description'?: string;
+    'dismiss'?: string;
+    'heading'?: string;
+    'href'?: string;
+  }
 }
 
 declare global {

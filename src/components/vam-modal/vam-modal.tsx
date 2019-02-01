@@ -7,11 +7,30 @@ import { Component } from '@stencil/core';
 })
 
 export class VamModal {
+  @Prop() heading : string
+  @Prop() description : string
+  @Prop() href : string
+  @Prop() cta : string
+  @Prop() dismiss : string
+
   render() {
     return (
-      <div>
-        <slot />
-      </div>
+      <section class="content">
+        <h1 class="heading">
+          {this.heading}
+        </h1>
+        <div class="description">
+          {this.description}
+        </div>
+        <a href="{this.href}" class="u-btn u-btn--arrowed">
+          {this.cta}
+        </a>
+        <div>
+          <a href="#" class="dismiss js-modal-dismiss u-link u-link--arrowed">
+            {this.dismiss}
+          </a>
+        </div>
+      </section>
     );
   }
 }

@@ -7,10 +7,12 @@
   }
 }
 
-vam-modal {
+:host {
   background-color: rgba(29, 30, 32, .85);
   bottom: 0;
+/*
   display: none;
+*/
   height: 100%;
   left: 0;
   position: fixed;
@@ -19,12 +21,12 @@ vam-modal {
   width: 100%;
   z-index: 9999;
 
-  &--active {
+  &.active {
     animation: fadeIn 1s;
     display: block;
   }
 
-  &__content {
+  .content {
     background-color: siteColor(vam-white);
     border-radius: 2px;
     color: siteColor(vam-black);
@@ -64,7 +66,7 @@ vam-modal {
     }
   }
 
-  &__title {
+  title {
     @include typeSetting(5, bold);
     color: siteColor(vam-black);
     margin: 0 0 12px;
@@ -76,8 +78,8 @@ vam-modal {
     }
   }
 
-  &__description,
-  &__dismiss {
+  description,
+  dismiss {
     @include typeSetting(1, regular);
     line-height: 1.35rem;
     margin: 0 0 16px;
@@ -90,7 +92,7 @@ vam-modal {
   }
 
 
-  &__dismiss {
+  dismiss {
     line-height: 1rem;
     margin-top: 13px;
   }
