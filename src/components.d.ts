@@ -17,14 +17,14 @@ export namespace Components {
     'description': string;
     'dismiss': string;
     'heading': string;
-    'href': string;
+    'link': string;
   }
   interface VamModalAttributes extends StencilHTMLAttributes {
     'cta'?: string;
     'description'?: string;
     'dismiss'?: string;
     'heading'?: string;
-    'href'?: string;
+    'link'?: string;
   }
 }
 

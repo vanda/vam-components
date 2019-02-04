@@ -1,4 +1,5 @@
 import { Component } from '@stencil/core';
+import { Prop } from '@stencil/core';
 
 @Component({
   tag: 'vam-modal',
@@ -9,7 +10,7 @@ import { Component } from '@stencil/core';
 export class VamModal {
   @Prop() heading : string
   @Prop() description : string
-  @Prop() href : string
+  @Prop() link : string
   @Prop() cta : string
   @Prop() dismiss : string
 
@@ -22,7 +23,7 @@ export class VamModal {
         <div class="description">
           {this.description}
         </div>
-        <a href="{this.href}" class="u-btn u-btn--arrowed">
+        <a href="{this.link}" class="u-btn u-btn--arrowed">
           {this.cta}
         </a>
         <div>
