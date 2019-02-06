@@ -10,9 +10,7 @@
 :host {
   background-color: rgba(29, 30, 32, .85);
   bottom: 0;
-/*
   display: none;
-*/
   height: 100%;
   left: 0;
   position: fixed;
@@ -21,7 +19,7 @@
   width: 100%;
   z-index: 9999;
 
-  &.active {
+  @at-root #{&}(.active) {
     animation: fadeIn 1s;
     display: block;
   }
@@ -66,7 +64,7 @@
     }
   }
 
-  title {
+  .title {
     @include typeSetting(5, bold);
     color: siteColor(vam-black);
     margin: 0 0 12px;
@@ -78,8 +76,8 @@
     }
   }
 
-  description,
-  dismiss {
+  .description,
+  .dismiss {
     @include typeSetting(1, regular);
     line-height: 1.35rem;
     margin: 0 0 16px;
@@ -92,7 +90,7 @@
   }
 
 
-  dismiss {
+  .dismiss {
     line-height: 1rem;
     margin-top: 13px;
   }

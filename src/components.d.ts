@@ -13,18 +13,25 @@ import '@stencil/core';
 export namespace Components {
 
   interface VamModal {
+    'close': () => void;
+    'content': string;
     'cta': string;
-    'description': string;
     'dismiss': string;
     'heading': string;
     'link': string;
+    'modalCampaignId': string;
+    'modalDomain': string;
+    'modalOnceOnly': boolean;
   }
   interface VamModalAttributes extends StencilHTMLAttributes {
+    'content'?: string;
     'cta'?: string;
-    'description'?: string;
     'dismiss'?: string;
     'heading'?: string;
     'link'?: string;
+    'modalCampaignId'?: string;
+    'modalDomain'?: string;
+    'modalOnceOnly'?: boolean;
   }
 }
 

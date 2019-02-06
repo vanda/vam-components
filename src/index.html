@@ -7,20 +7,17 @@
 </head>
 <body>
 
-  <vam-modal heading="this is a modal!" description="this is a bit of a description" cta="click me!" link="https://vam.ac.uk" dismiss="shut up"></vam-modal>
-
-
-  <script>
-    if ('serviceWorker' in navigator && location.protocol !== 'file:') {
-      // auto-unregister service worker during dev mode
-      navigator.serviceWorker.getRegistration().then(function(registration) {
-        if (registration) {
-          registration.unregister().then(function() { location.reload(true) });
-        }
-      });
-    }
-  </script>
-
+  <vam-modal 
+    modal-campaign-id="CampaignTest"
+    modal-domain="localhost"
+    modal-once-only="true"
+    heading="this is a modal!"
+    cta="click me!"
+    link="https://vam.ac.uk"
+    dismiss="shut up"
+    >
+    <p>this is a bit of a description</p>
+  </vam-modal>
 
 
 </body></html>
