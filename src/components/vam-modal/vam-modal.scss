@@ -1,5 +1,5 @@
-@import 'vam-fractal/src/components/units/button/_button.scss';
-@import 'vam-fractal/src/components/units/link/_link.scss';
+@import '../../../node_modules/vam-fractal/src/components/units/button/_button.scss';
+@import '../../../node_modules/vam-fractal/src/components/units/link/_link.scss';
 
 @keyframes fadeIn {
   from {
@@ -10,7 +10,7 @@
   }
 }
 
-:host {
+vam-modal {
   background-color: rgba(29, 30, 32, .85);
   bottom: 0;
   display: none;
