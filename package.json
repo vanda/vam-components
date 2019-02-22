@@ -1,0 +1,78 @@
+{
+	"name": "lit-loader-example",
+	"version": "0.0.0",
+	"description": "Example repository to show how the lit-loader works",
+	"license": "MIT",
+	"repository": "PolymerX/lit-loader-example",
+	"bugs": {
+		"url": "https://github.com/PolymerX/lit-loader-example/issues",
+		"email": "info@godev.space"
+	},
+	"homepage": "https://github.com/PolymerX/lit-loader-example",
+	"author": {
+		"name": "LasaleFamine",
+		"email": "info@godev.space",
+		"url": "godev.space"
+	},
+	"main": "src/index.js",
+	"engines": {
+		"node": ">=8"
+	},
+	"scripts": {
+		"start": "http-server dist",
+		"build": "webpack",
+		"test": "xo && ava"
+	},
+	"files": [
+		"src"
+	],
+	"keywords": [
+		""
+	],
+	"dependencies": {
+		"@babel/core": "7.2.2",
+		"@babel/preset-env": "7.3.0",
+		"autoprefixer": "9.4.8",
+		"babel-loader": "7.1.5",
+		"css-loader": "2.1.0",
+		"cssnano": "4.1.10",
+		"html-webpack-plugin": "3.2.0",
+		"http-server": "0.11.1",
+		"lit-element": "2.0.0-rc.3",
+		"lit-loader": "0.1.0",
+		"postcss-custom-media": "7.0.7",
+		"postcss-discard-comments": "4.0.2",
+		"postcss-easy-import": "3.0.0",
+		"postcss-loader": "3.0.0",
+		"postcss-mixins": "6.2.1",
+		"postcss-nesting": "7.0.0",
+		"postcss-reporter": "6.0.1",
+		"postcss-scss": "2.0.0",
+		"postcss-selector-not": "4.0.0",
+		"style-loader": "0.23.1",
+		"stylelint": "9.10.1",
+		"stylelint-config-standard": "18.2.0",
+		"webpack": "4.16.1",
+		"webpack-cli": "3.0.8",
+		"xo": "0.21.1"
+	},
+	"xo": {
+		"envs": [
+			"browser",
+			"node"
+		],
+		"extensions": [
+			".lit"
+		],
+		"rules": {
+			"max-len": [
+				"error",
+				{
+					"code": 80,
+					"ignoreUrls": true
+				}
+			],
+			"capitalized-comments": "off"
+		}
+	}
+}

@@ -1,0 +1,103 @@
+<style lang="postcss">
+@import './../helpers.pcss';
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+:host {
+  background-color: rgba(29, 30, 32, 0.85);
+  bottom: 0;
+  display: none;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+
+  &(.active) {
+    animation: fadeIn 1s;
+    display: block;
+  }
+
+  .content {
+    background-color: var(--vam-white);
+    border-radius: 2px;
+    color: var(--vam-black);
+    left: 50%;
+    margin: auto;
+    max-width: 300px;
+    padding: 30px 20px 24px;
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+
+    a,
+    &::after {
+      pointer-events: all;
+    }
+
+    &::after {
+      color: var(--vam-white);
+      content: '\00d7';
+      cursor: pointer;
+      font-size: 32px;
+      line-height: 0;
+      position: absolute;
+      right: 0;
+      top: -23px;
+    }
+  }
+}
+</style>
+
+<template>
+  <div>
+    <p>
+      Clicked: <span>${this.clicks}</span> times.
+      Value is <span>${this.value}</span>.
+      <button class="u-btn" @click="${this._onIncrement}" title="Add 1">+</button>
+      <button @click="${this._onDecrement}" title="Minus 1">-</button>
+    </p>
+  </div>
+</template>
+
+<script>
+  export default class VamModal {
+    static get properties() {
+      return {
+        clicks: Number,
+        value: Number
+      };
+    }
+
+    constructor() {
+      super();
+      this.clicks = 0;
+      this.value = 0;
+    }
+
+    _onIncrement() {
+      this.value++;
+      this.clicks++;
+      this.dispatchEvent(new CustomEvent('counter-incremented'));
+    }
+
+    _onDecrement() {
+      this.value--;
+      this.clicks++;
+      this.dispatchEvent(new CustomEvent('counter-decremented'));
+    }
+  }
+
+  window.customElements.define('vam-modal', VamModal);
+</script>
