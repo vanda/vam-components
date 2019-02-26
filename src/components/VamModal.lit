@@ -1,103 +1,81 @@
 <style lang="postcss">
 @import './../helpers.pcss';
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 :host {
-  background-color: rgba(29, 30, 32, 0.85);
-  bottom: 0;
-  display: none;
-  height: 100%;
-  left: 0;
-  position: fixed;
-  right: 0;
-  top: 0;
-  width: 100%;
-  z-index: 9999;
-
-  &(.active) {
-    animation: fadeIn 1s;
-    display: block;
-  }
-
-  .content {
-    background-color: var(--vam-white);
-    border-radius: 2px;
-    color: var(--vam-black);
-    left: 50%;
-    margin: auto;
-    max-width: 300px;
-    padding: 30px 20px 24px;
-    pointer-events: none;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-
-    a,
-    &::after {
-      pointer-events: all;
-    }
-
-    &::after {
-      color: var(--vam-white);
-      content: '\00d7';
-      cursor: pointer;
-      font-size: 32px;
-      line-height: 0;
-      position: absolute;
-      right: 0;
-      top: -23px;
-    }
-  }
+  display: block;
 }
+
+:host(.active) .b-modal {
+  animation: fadeIn 1s;
+  display: block;
+}
+
 </style>
 
 <template>
-  <div>
-    <p>
-      Clicked: <span>${this.clicks}</span> times.
-      Value is <span>${this.value}</span>.
-      <button class="u-btn" @click="${this._onIncrement}" title="Add 1">+</button>
-      <button @click="${this._onDecrement}" title="Minus 1">-</button>
-    </p>
+  <link rel="stylesheet" href="https://vam-design-guide.surge.sh/assets/styles/vam-style.css" type="text/css">
+
+  <div class="b-modal">
+    <section class="b-modal__content">
+			<h1 class="b-modal__title">
+				${this.heading}
+			</h1>
+			<div class="b-modal__description">
+				<slot />
+			</div>
+      <a href="{this.link}" class="u-btn u-btn--arrowed">
+        ${this.cta}
+      </a>
+			<div>
+				<a href="#" class="b-modal__dismiss u-link u-link--arrowed">
+					${this.dismiss}
+				</a>
+			</div>
+		</section>
   </div>
 </template>
 
 <script>
-  export default class VamModal {
-    static get properties() {
-      return {
-        clicks: Number,
-        value: Number
-      };
-    }
+import cookies from 'browser-cookies';
 
-    constructor() {
-      super();
-      this.clicks = 0;
-      this.value = 0;
-    }
-
-    _onIncrement() {
-      this.value++;
-      this.clicks++;
-      this.dispatchEvent(new CustomEvent('counter-incremented'));
-    }
-
-    _onDecrement() {
-      this.value--;
-      this.clicks++;
-      this.dispatchEvent(new CustomEvent('counter-decremented'));
-    }
+export default class VamModal {
+  static get properties() {
+    return {
+      alt: String,
+      modalCampaignId: String,
+      modalDomain: String,
+      modalOnceOnly: Boolean,
+      heading: String,
+      content: String,
+      link: String,
+      cta: String,
+      dismiss: String
+    };
   }
 
-  window.customElements.define('vam-modal', VamModal);
+  constructor() {
+    super();
+    this.modalOnceOnly = true;
+  }
+
+  _modalTracking(category, action) {
+    window['dataLayer'] = window['dataLayer'] || [];
+    window['dataLayer'].push({
+      event: 'myClick',
+      category,
+      action
+    });
+  }
+}
+
+window.customElements.define('vam-modal', VamModal);
+
+const el = document.querySelector('vam-modal');
+
+if(!el.modalOnceOnly || !cookies.get(el.modalCampaignId)) {
+  document.body.appendChild(el);
+  el.classList.add('active');
+  el._modalTracking(el.modalCampaignId, 'pop-up displayed');
+}
+
 </script>

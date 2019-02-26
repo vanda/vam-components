@@ -1,3 +1,1 @@
-/* eslint-disable import/no-unassigned-import */
-
-import './app';
+import './components/VamModal.lit';
