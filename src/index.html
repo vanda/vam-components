@@ -8,16 +8,22 @@
   <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <body>
+
   <vam-modal 
 		modal-campaign-id="CampaignTest"
 		modal-domain="localhost"
-		modal-once-only="true"
+		modal-once-only="false"
 		heading="this is a modal!"
 		cta="click me!"
 		link="https://vam.ac.uk"
-		dismiss="shut up"
-		>
-		<p>here's a bit of a description</p>
+		dismiss="shut up">
+		<p>some slotted content here</p>
 	</vam-modal>
+
+  <my-element 
+		my-prop="my-prop" 
+		someprop="someprop">
+	</my-element>
+
 </body>
 </html>
