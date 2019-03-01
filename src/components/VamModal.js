@@ -1,28 +1,13 @@
 import { LitElement, html } from 'lit-element';
 import cookies from 'browser-cookies';
 
-export default class VamModal {
-  static get properties() {
-    return {
-      modalCampaignId: String,
-      modalDomain: String,
-      modalOnceOnly: Boolean = false,
-      heading: String,
-      content: String,
-      link: String,
-      cta: String,
-      dismiss: String
-    };
-  }
+const tagName = 'vam-modal';
 
-  constructor() {
-    super();
-  }
-
+class VamModal extends LitElement {
   render() {
     return html`
       <style lang="postcss">
-      @import './../helpers.pcss';
+      @import './src/helpers.pcss';
 
       :host {
         display: block;
@@ -58,6 +43,30 @@ export default class VamModal {
     `;
   }
 
+  static get properties() {
+    return {
+      modalCampaignId: String,
+      modalDomain: String,
+      onceOnly: Boolean = false,
+      heading: String,
+      content: String,
+      link: String,
+      cta: String,
+      dismiss: String
+    };
+  }
+
+  constructor() {
+    super();
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.modalCampaignId = this.getAttribute('modal-campaign-id');
+    this.modalDomain = this.getAttribute('modal-domain');
+    this.onceOnly = this.getAttribute('once-only') ? true : false;
+  }
+
   _modalTracking(category, action) {
     window['dataLayer'] = window['dataLayer'] || [];
     window['dataLayer'].push({
@@ -67,8 +76,8 @@ export default class VamModal {
     });
   }
   
-  _onClick(e) {console.log('#####', this.modalCampaignId);
-    if (this.modalOnceOnly) {
+  _onClick(e) {
+    if (this.onceOnly) {
       cookies.set(this.modalCampaignId, 'seen', { domain: this.modalDomain, expires: 365 });
     }
     if (e.target !== this.querySelector('.b-modal')) {
@@ -82,11 +91,11 @@ export default class VamModal {
     }
   };
 }
-window.customElements.define('vam-modal', VamModal);
+window.customElements.define(tagName, VamModal);
 
-const el = document.querySelector('vam-modal');
+const el = document.querySelector(tagName);
 
-if(!el.modalOnceOnly || !cookies.get(el.modalCampaignId)) {
+if(!el.onceOnly || !cookies.get(el.modalCampaignId)) {
   document.body.appendChild(el);
   el.classList.add('active');
   el._modalTracking(el.modalCampaignId, 'pop-up displayed');

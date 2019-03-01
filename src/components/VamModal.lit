@@ -43,7 +43,7 @@ export default class VamModal {
     return {
       modalCampaignId: String,
       modalDomain: String,
-      modalOnceOnly: Boolean = false,
+      onceOnly: Boolean = false,
       heading: String,
       content: String,
       link: String,
@@ -56,6 +56,13 @@ export default class VamModal {
     super();
   }
 
+  connectedCallback() {
+    super.connectedCallback();
+    this.modalCampaignId = this.getAttribute('modal-campaign-id');
+    this.modalDomain = this.getAttribute('modal-domain');
+    this.onceOnly = this.getAttribute('once-only') ? true : false;
+  }
+
   _modalTracking(category, action) {
     window['dataLayer'] = window['dataLayer'] || [];
     window['dataLayer'].push({
@@ -65,8 +72,8 @@ export default class VamModal {
     });
   }
   
-  _onClick(e) {console.log('#####', this.modalCampaignId);
-    if (this.modalOnceOnly) {
+  _onClick(e) {
+    if (this.onceOnly) {
       cookies.set(this.modalCampaignId, 'seen', { domain: this.modalDomain, expires: 365 });
     }
     if (e.target !== this.querySelector('.b-modal')) {
@@ -85,7 +92,7 @@ window.customElements.define('vam-modal', VamModal);
 
 const el = document.querySelector('vam-modal');
 
-if(!el.modalOnceOnly || !cookies.get(el.modalCampaignId)) {
+if(!el.onceOnly || !cookies.get(el.modalCampaignId)) {
   document.body.appendChild(el);
   el.classList.add('active');
   el._modalTracking(el.modalCampaignId, 'pop-up displayed');
