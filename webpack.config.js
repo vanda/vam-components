@@ -30,10 +30,14 @@ module.exports = {
                 }
               }]]
             }
-          },
-          {
-            loader: 'lit-loader'
           }
+        ]
+      },
+      {
+        test: /\.pcss?$/,
+        use: [
+          'css-loader',
+          'postcss-loader'
         ]
       }
     ]

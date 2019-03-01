@@ -1,23 +1,13 @@
 import { LitElement, html } from 'lit-element';
 import cookies from 'browser-cookies';
+import styles from './VamModal.pcss'
 
 const tagName = 'vam-modal';
-
 class VamModal extends LitElement {
   render() {
     return html`
-      <style lang="postcss">
-      @import './src/helpers.pcss';
-
-      :host {
-        display: block;
-      }
-
-      :host(.active) .b-modal {
-        animation: fadeIn 1s;
-        display: block;
-      }
-
+      <style>
+        ${styles.toString()}
       </style>
 
       <link rel="stylesheet" href="https://vam-design-guide.surge.sh/assets/styles/vam-style.css" type="text/css">
