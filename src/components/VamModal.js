@@ -64,7 +64,7 @@ class VamModal extends LitElement {
     super.connectedCallback();
     this.modalCampaignId = this.getAttribute('modal-campaign-id');
     this.modalDomain = this.getAttribute('modal-domain');
-    this.onceOnly = this.getAttribute('once-only') ? true : false;
+    this.onceOnly = this.hasAttribute('once-only');
   }
 
   _modalTracking(category, action) {
