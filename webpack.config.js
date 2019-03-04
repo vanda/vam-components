@@ -24,13 +24,7 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-              presets: [['@babel/preset-env', {
-                targets: {
-                  browsers: [
-                    'safari 11'
-                  ]
-                }
-              }]]
+              presets: [['@babel/preset-env']]
             }
           }
         ]

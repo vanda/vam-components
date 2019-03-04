@@ -30,6 +30,7 @@
     "@babel/preset-env": "7.3.4",
     "babel-loader": "8.0.5",
     "browser-cookies": "1.2.0",
+    "browserslist": "4.4.2",
     "css-loader": "2.1.0",
     "cssnano": "4.1.10",
     "html-webpack-plugin": "3.2.0",
@@ -42,6 +43,12 @@
     "webpack-cli": "3.0.8",
     "xo": "0.21.1"
   },
+  "browserslist": [
+    "last 1 version",
+    "> 1%",
+    "maintained node versions",
+    "not dead"
+  ],
   "xo": {
     "envs": [
       "browser",
