@@ -26,9 +26,9 @@
     ""
   ],
   "dependencies": {
-    "@babel/core": "7.2.2",
-    "@babel/preset-env": "7.3.0",
-    "babel-loader": "7.1.5",
+    "@babel/core": "7.3.4",
+    "@babel/preset-env": "7.3.4",
+    "babel-loader": "8.0.5",
     "browser-cookies": "1.2.0",
     "css-loader": "2.1.0",
     "cssnano": "4.1.10",
@@ -38,7 +38,7 @@
     "postcss-easy-import": "3.0.0",
     "postcss-loader": "3.0.0",
     "postcss-preset-env": "6.6.0",
-    "webpack": "4.16.1",
+    "webpack": "4.29.6",
     "webpack-cli": "3.0.8",
     "xo": "0.21.1"
   },

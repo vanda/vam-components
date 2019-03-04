@@ -12,14 +12,14 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'V&A Custom Elements',
+      title: 'V&amp;A Custom Elements',
       template: './src/index.html'
     })
   ],
   module: {
     rules: [
       {
-        test: /\.lit$/,
+        test: /\.js$/,
         use: [
           {
             loader: 'babel-loader',
