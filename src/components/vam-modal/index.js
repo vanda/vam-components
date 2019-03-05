@@ -70,7 +70,7 @@ class VamModal extends LitElement {
     if (this.onceOnly) {
       cookies.set(this.modalCampaignId, 'seen', { domain: this.modalDomain, expires: 365 });
     }
-    if (e.target !== this.querySelector('.b-modal')) {
+    if (e.target !== this.shadowRoot.querySelector('.b-modal')) {
       const modalAction = this.querySelector('b-modal__cta');
       if (e.target === modalAction) {
         this._modalTracking(this.modalCampaign, `clicked: ${modalAction.textContent}`);
