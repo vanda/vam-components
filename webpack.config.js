@@ -1,5 +1,7 @@
-const path = require('path');
+const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const OUTPUT_PATH = resolve(__dirname, 'dist');
 
 module.exports = {
   mode: 'none',
@@ -8,11 +10,11 @@ module.exports = {
 	},
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: OUTPUT_PATH
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'V&amp;A Custom Elements',
+      title: 'V&amp;A Web Components',
       template: './src/index.html'
     })
   ],
@@ -26,8 +28,19 @@ module.exports = {
             options: {
               'presets': [
 								['@babel/preset-env', {
-									'useBuiltIns': 'usage'
+									'modules': false,
+                  'useBuiltIns': 'usage'
 								}]
+							],
+              plugins: [
+								[
+									'@babel/plugin-transform-runtime', {
+										corejs: false,
+										helpers: false,
+										regenerator: true,
+										useESModules: false
+									}
+								]
 							]
             }
           }

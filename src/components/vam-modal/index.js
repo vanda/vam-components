@@ -1,5 +1,5 @@
 import { LitElement, html } from 'lit-element';
-import cookies from 'browser-cookies';
+//~ import cookies from 'browser-cookies';
 import styles from './index.pcss';
 
 const tagName = 'vam-modal';

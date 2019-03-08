@@ -1,4 +1,4 @@
-# V&A Custom Elements with LitElement
+# V&A Web Components with LitElement
 
 Install dependencies:
 ```
