@@ -21,31 +21,13 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              'presets': [
-								['@babel/preset-env', {
-									'modules': false,
-                  'useBuiltIns': 'usage'
-								}]
-							],
-              plugins: [
-								[
-									'@babel/plugin-transform-runtime', {
-										corejs: false,
-										helpers: false,
-										regenerator: true,
-										useESModules: false
-									}
-								]
-							]
-            }
-          }
-        ]
-      },
+				test: /\.js$/,
+				loader: 'babel-loader',
+				exclude: /node_modules\/(?!(@webcomponents\/shadycss|lit-element|lit-html)\/).*/,
+				options: {
+					cacheDirectory: true
+				}
+			},
       {
         test: /\.pcss?$/,
         use: [
