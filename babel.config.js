@@ -5,10 +5,7 @@ module.exports = {
         [
           '@babel/preset-env',
           {
-            modules: false,
-            targets: {
-              ie: 11
-            }
+            modules: false
           }
         ]
       ],

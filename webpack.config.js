@@ -4,9 +4,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OUTPUT_PATH = resolve(__dirname, 'dist');
 
 module.exports = {
-  mode: 'none',
+  mode: 'development',
   entry: {
-    vamModal : './src/components/vam-modal/index.js'
+    vamModal : ['element-remove', './src/components/vam-modal/index.js']
 	},
   output: {
     filename: '[name].bundle.js',
